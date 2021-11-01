@@ -1,0 +1,7 @@
+.card-surface {
+  height: 400px;
+  width: 500px;
+  border: grey 1px solid;
+  box-shadow: grey 2px 2px;
+  background-color: hotpink;
+}
