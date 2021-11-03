@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './components/Card/Card'
+import CardProvider from './components/CardProvider/CardProvider'
 import Container from './components/Container/Container'
 import TopBar from './components/TopBar/TopBar'
 import './App.css'
@@ -9,7 +9,7 @@ const App = () => {
     <div className="wrapper">
       <TopBar />
       <Container>
-        <Card></Card>
+        <CardProvider />
       </Container>
     </div>
   )
