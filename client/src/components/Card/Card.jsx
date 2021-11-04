@@ -7,7 +7,7 @@ const Card = (props) => {
   // WORKITEM image alt text from data
   const { front_text, front_image, back_text, back_image, cardAdvanceHandler } =
     props.cardContent
-  
+
   const frontContent = () => {
     if (front_image && !front_text) {
       return <img src={front_image} />
@@ -15,16 +15,16 @@ const Card = (props) => {
       return <h3>{front_text}</h3>
     } else if (front_image && front_text) {
       return (
-        <div className="card-content">
+        <React.Fragment>
           <img src={front_image} />
           <h3>{front_text}</h3>
-        </div>
+        </React.Fragment>
       )
     } else {
-      throw new Error('We shouldn\'t get to this state')
+      throw new Error("We shouldn't get to this state")
     }
   }
-
+  // WORKITEM Intermittently bad back card formatting.
   const backContent = () => {
     if (back_image && !back_text) {
       return <img src={back_image} />
@@ -38,7 +38,7 @@ const Card = (props) => {
         </div>
       )
     } else {
-      throw new Error('We shouldn\'t get to this state')
+      throw new Error("We shouldn't get to this state")
     }
   }
 
@@ -50,7 +50,11 @@ const Card = (props) => {
 
   return (
     <div className="flashcard-wrapper">
-      <div className="card-surface">{isFront ? frontContent() : backContent()}</div>
+      <div className="card-surface">
+        <div className="card-content">
+          {isFront ? frontContent() : backContent()}
+        </div>
+      </div>
       <Button buttonStyle="primary" onClickHandler={flipHandler}>
         Flip
       </Button>

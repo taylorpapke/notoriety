@@ -1,11 +1,18 @@
-import Express from 'express'
+import express from 'express'
 
-const app = Express()
+const app = express()
 const port = 8000
 
-const handler = (req, res) => {
-  res.send('Hello World!')
-}
+app.use(express.json())
 
-app.get('/', handler)
-app.listen(port)
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.get('/cards', (req, res) => {
+  res.json({ key: 'value' })
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`)
+})
