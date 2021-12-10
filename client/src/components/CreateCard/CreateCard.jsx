@@ -38,7 +38,7 @@ const CreateCard = () => {
               formProps.setFieldValue("frontImage", e.currentTarget.files[0])
             }
           />
-          <h3>Back Text:</h3>
+          <h3>Back Text</h3>
           <textarea
             name="backText"
             className="textarea"

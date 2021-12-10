@@ -13,6 +13,12 @@ app.get('/cards', (req, res) => {
   res.json({ key: 'value' })
 })
 
+app.post('/cards', (req, res) => {
+  const newCard = req.body
+  console.log(JSON.stringify(newCard))
+  res.sendStatus('202')
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
 })
