@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd service && npm run dev\" \"cd client && npm start\""
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^6.3.0"
+    "jest": "27.4.5"
   }
 }
