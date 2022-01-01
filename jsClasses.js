@@ -1,56 +1,64 @@
 class SomeObjectOfImportance {
-  
   constructor(aProperty) {
-    this.memberProperty = aProperty
+    this.memberProperty = aProperty;
   }
 
   aClassMethod() {
-    return this.memberProperty
+    return this.memberProperty;
   }
 
   static aStaticMethod() {
-    return "The same thing for every class object"
+    return 'The same thing for every class object';
   }
 }
 
 class Rectangle {
   constructor(x, y) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
 
   print() {
-    console.log(`x ${this.x} | y ${this.y}`) // Template string
+    console.log(`x ${this.x} | y ${this.y}`); // Template string
   }
 
   exportRectangle() {
-    return { x: this.x, y: this.y }
+    return { x: this.x, y: this.y };
   }
 
   fromRectangle(otherRectangle) {
-    const { x, y } = otherRectangle.exportRectangle()
-    this.x = x
-    this.y = y
+    const { x, y } = otherRectangle.exportRectangle();
+    this.x = x;
+    this.y = y;
   }
 }
 
 class Randomizer {
-  apiKey = 'my-api-key'
-  apiHost = 'my-api-host'
-  
-  static async getRandomWord() {
-    fetch
+  static async randomWordPromise() {
+    try {
+      const response = await fetch(
+        'https://wordsapiv1.p.rapidapi.com/words/?random=true',
+        {
+          method: 'GET',
+          headers: {
+            'x-rapidapi-key': 'your-api-key-here',
+            'x-rapidapi-host': 'api-host-here',
+          },
+        }
+      )
+      const randomWord = JSON.parse(response).word
+      return randomWord
+    } catch (error) {
+      console.log(`an error occured ${error}`)
+    } finally {
+      console.log('this will always execute after the above blocks')
+    }
   }
 }
 
 module.exports = { SomeObjectOfImportance }
 
-/* Language Features to Describe:
-  Promises
-  Async/Await
-  filter, map, reduce
-  JavaScript For/of
-  basic Math Methods
-  Advanced Concepts
-    - objects and changing values  
-*/
+const randomWord = await Randomizer.randomWordPromise()
+console.log('random word with await ', randomWord)
+
+Randomizer.randomWordPromise().then((word) => console.log('random word with then ', word))
