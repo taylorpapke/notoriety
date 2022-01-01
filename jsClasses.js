@@ -1,18 +1,51 @@
 class SomeObjectOfImportance {
   
-  // The notation on the line below is called 'destructuring'.
-// We could just as easily import the module with the following (commented) code
-// const jsFeatures = require('./jsFeatures')
-// and then reference these functions with 'jsFeatures.myFirstFunction' etc.
+  constructor(aProperty) {
+    this.memberProperty = aProperty
+  }
+
+  aClassMethod() {
+    return this.memberProperty
+  }
+
+  static aStaticMethod() {
+    return "The same thing for every class object"
+  }
 }
 
+class Rectangle {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+
+  print() {
+    console.log(`x ${this.x} | y ${this.y}`) // Template string
+  }
+
+  exportRectangle() {
+    return { x: this.x, y: this.y }
+  }
+
+  fromRectangle(otherRectangle) {
+    const { x, y } = otherRectangle.exportRectangle()
+    this.x = x
+    this.y = y
+  }
+}
+
+class Randomizer {
+  apiKey = 'my-api-key'
+  apiHost = 'my-api-host'
+  
+  static async getRandomWord() {
+    fetch
+  }
+}
+
+module.exports = { SomeObjectOfImportance }
+
 /* Language Features to Describe:
-  JavaScript Classes
-    - class keyword
-    - constructors and memebers
-    - static members
-  Template literals
-  Destructuring
   Promises
   Async/Await
   filter, map, reduce
