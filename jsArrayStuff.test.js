@@ -1,4 +1,4 @@
-const { interestingObject, bindingObjectExample, makeAQueue } = require('./jsArrayStuff');
+const { interestingObject, makeAQueue, baseObject } = require('./jsArrayStuff');
 
 describe('Array methods', () => {
   const expectedFilterExample = [3, 5, 8, 9];
@@ -21,7 +21,8 @@ describe('Arrays like queues', () => {
     result.push(aQueue.shift())
   });
 
-  it('should ', () => {
-    
+  it('should populate result correctly and modify the queue', () => {
+    expect(result).toEqual([1, 2, 3])
+    expect(aQueue).toEqual([4,5,6])
   });
 });

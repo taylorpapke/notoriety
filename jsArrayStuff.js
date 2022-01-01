@@ -36,27 +36,3 @@ module.exports = {
   interestingObject,
   makeAQueue
 }
-
-// const popAnElement = likeAQueue.shift()
-// console.log(`popped an element ${popAnElement}`)
-
-// const baseObject = { first: 1, second: 'two' }
-// const refToBaseObject = baseObject
-// refToBaseObject.third = '3'
-
-// console.log(`base object has element third: ${baseObject.third}`)
-
-// const newObject = { ...baseObject, fourth: 4 }
-// newObject.fifth = 5
-
-// console.log(`base object keys ${baseObject.fourth}`)
-// console.log(`new object ${newObject.third} and ${newObject.fifth}`)
-
-// function restFunc(...arguments) {
-//   const reducer = (previous, current) => { return previous + current}
-//   const reduced = arguments.reduce(reducer)
-//   return reduced
-// }
-
-// const reduced = restFunc(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-// console.log(`reduced ${reduced}`)
