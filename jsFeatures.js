@@ -46,7 +46,7 @@ const anArrowFunction = (whichTakes, someParameters) => {
 
 // When we import code, that code is executed. We can see that by the output
 // from 'anotherModule' when we import it with 'require'
-const { somethingToExport } = require('./anotherModule');
+const { somethingToExport } = require('./jsModules');
 
 // When we import this module into the test file
 console.log('This is also run when we import this code in the test file');
@@ -55,6 +55,7 @@ console.log('This is also run when we import this code in the test file');
 // we can accept a function as a param in the same way that we can return one
 function functionsAsParams(acceptsAFunction) {
   const value = acceptsAFunction();
+  console.log('function wrapping function')
   return value;
 }
 

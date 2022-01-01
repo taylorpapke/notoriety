@@ -33,32 +33,29 @@ class Rectangle {
   }
 }
 
+const axios = require('axios');
+
 class Randomizer {
   static async randomWordPromise() {
+    const options = {
+      method: 'GET',
+      url: 'https://wordsapiv1.p.rapidapi.com/words/?random=true',
+      headers: {
+        'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
+        'x-rapidapi-key': 'your-api-key',
+      },
+    }
     try {
-      const response = await fetch(
-        'https://wordsapiv1.p.rapidapi.com/words/?random=true',
-        {
-          method: 'GET',
-          headers: {
-            'x-rapidapi-key': 'your-api-key-here',
-            'x-rapidapi-host': 'api-host-here',
-          },
-        }
-      )
-      const randomWord = JSON.parse(response).word
-      return randomWord
+      const response = await axios.request(options);
+      const randomWord = response.data.word
+      console.log('returned ', randomWord)
+      return randomWord;
     } catch (error) {
-      console.log(`an error occured ${error}`)
+      console.log(`an error occured ${error}`);
     } finally {
-      console.log('this will always execute after the above blocks')
+      console.log('this will always execute after the above blocks');
     }
   }
 }
 
-module.exports = { SomeObjectOfImportance }
-
-const randomWord = await Randomizer.randomWordPromise()
-console.log('random word with await ', randomWord)
-
-Randomizer.randomWordPromise().then((word) => console.log('random word with then ', word))
+module.exports = { SomeObjectOfImportance, Randomizer };

@@ -3,8 +3,6 @@
  * `import` is something we'll explore with React.
  */
 
-const { expect } = require('@jest/globals');
-
 const { myFirstFunction, howNotToUseConst, anArrowFunction, functionsAsParams } = require('./jsFeatures')
 
 
@@ -22,7 +20,7 @@ describe('JavaScript Exaples', () => {
   });
 
   describe('Bad use of const', () => {
-    // We'll cover the new keyword when we talk about classes
+    // We'll cover the 'new' keyword when we talk about classes
     const expectedError = new Error('Assignment to constant variable.')
 
     it('should throw an error', () => {
@@ -44,5 +42,19 @@ describe('JavaScript Exaples', () => {
     });
   });
 
+  describe('functions as parameters', () => {
+    const someFunction = () => {
+      console.log('function within function')
+      return 55
+    }
+    let result
 
+    beforeEach(() => {
+      result = functionsAsParams(someFunction)
+    })
+
+    it('should call the function inside the function', () => {
+      expect(result).toEqual(55)
+    });
+  });
 });
