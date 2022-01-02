@@ -2,7 +2,9 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Button from "../Button/Button"
 import "./Card.css"
+import ButtonGroup from "../ButtonGroup/ButtonGroup"
 
+// we could also destructure the props parameter
 const Card = (props) => {
   // WORKITEM image alt text from data
   const { front_text, front_image, back_text, back_image, cardAdvanceHandler } =
@@ -10,14 +12,26 @@ const Card = (props) => {
 
   const frontContent = () => {
     if (front_image && !front_text) {
-      return <img src={front_image} />
+      return (
+        <div className="card-image-full">
+          <img src={front_image} className="card-image" />
+        </div>
+      )
     } else if (!front_image && front_text) {
-      return <h3>{front_text}</h3>
+      return (
+        <div className="card-text">
+          <h3>{front_text}</h3>
+        </div>
+      )
     } else if (front_image && front_text) {
       return (
         <React.Fragment>
-          <img src={front_image} />
-          <h3>{front_text}</h3>
+          <div className="card-image-above-text">
+            <img src={front_image} className="card-image" />
+          </div>
+          <div className="card-text">
+            <h3>{front_text}</h3>
+          </div>
         </React.Fragment>
       )
     } else {
@@ -27,15 +41,27 @@ const Card = (props) => {
   // WORKITEM Intermittently bad back card formatting.
   const backContent = () => {
     if (back_image && !back_text) {
-      return <img src={back_image} />
-    } else if (!back_image && back_text) {
-      return <h3>{back_text}</h3>
-    } else if (back_image && back_text) {
       return (
-        <div className="card-content">
-          <img src={back_image} />
+        <div className="card-image-full">
+          <img src={back_image} className="card-image" />
+        </div>
+      )
+    } else if (!back_image && back_text) {
+      return (
+        <div className="card-text">
           <h3>{back_text}</h3>
         </div>
+      )
+    } else if (back_image && back_text) {
+      return (
+        <React.Fragment>
+          <div className="card-image-above-text">
+            <img src={back_image} className="card-image" />
+          </div>
+          <div className="card-text">
+            <h3>{back_text}</h3>
+          </div>
+        </React.Fragment>
       )
     } else {
       throw new Error("We shouldn't get to this state")
@@ -51,21 +77,21 @@ const Card = (props) => {
   return (
     <div className="flashcard-wrapper">
       <div className="card-surface">
-        <div className="card-content">
-          {isFront ? frontContent() : backContent()}
-        </div>
+        {isFront ? frontContent() : backContent()}
       </div>
-      <Button buttonStyle="primary" onClickHandler={flipHandler}>
-        Flip
-      </Button>
-      <Button
-        buttonStyle="secondary"
-        onClickHandler={() => {
-          cardAdvanceHandler()
-        }}
-      >
-        Next
-      </Button>
+      <ButtonGroup>
+        <Button buttonStyle="primary" onClickHandler={flipHandler}>
+          Flip
+        </Button>
+        <Button
+          buttonStyle="secondary"
+          onClickHandler={() => {
+            cardAdvanceHandler()
+          }}
+        >
+          Next
+        </Button>
+      </ButtonGroup>
     </div>
   )
 }

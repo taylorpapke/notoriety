@@ -11,7 +11,7 @@ const TopBar = () => {
       <ButtonGroup>
         <Button buttonStyle='primary' onClickHandler={buttonClickHandler}>
           Left
-          </Button>
+        </Button>
         <Button buttonStyle='secondary' onClickHandler={buttonClickHandler}>
           Right
         </Button>

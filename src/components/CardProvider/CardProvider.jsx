@@ -12,6 +12,15 @@ const CardProvider = () => {
     }
   }
   
+  /**
+   * Week Three Assignment
+   * Part One - Your assignment this week is to create a 'back' button that will
+   * allow the user to return to the previous card. 
+   * Part Two - The next button currently cycles through all of the available
+   * cards. After adding the back button, modify the behavior so that the back
+   * button is hidden when the first card is displayed and the next button is
+   * hidden when the last card in the set is displayed.
+   */
   return <Card cardContent={{ cardAdvanceHandler: nextCardHandler, ...cardData[index] }}></Card>
 }
 
