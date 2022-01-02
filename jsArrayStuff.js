@@ -1,5 +1,12 @@
 const interestingObject = {
   arraysForDays: [3, 5, 8, 'a', { anObjectProperty: 'a value' }, true, 9],
+  oneIterator: function () {
+    const collector = []
+    for (let element of this.arraysForDays) {
+      collector.push(element)
+    }
+    return collector
+  },
   filterExample: function () {
     return this.arraysForDays.filter((element) => typeof element === 'number')
   },

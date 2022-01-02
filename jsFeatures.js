@@ -28,16 +28,19 @@ const anArrowFunction = (whichTakes, someParameters) => {
   const objectsAreWeird = {
     aProperty: 'a value',
     anotherProperty: 42,
+    truthyStatement: false,
+    innerObject: { stuff: 'an things' }
   };
 
-  canChange.replace('ff', 'nt');
+  canChange = canChange.replace('ff', 'nt');
   console.log('changed to ', canChange);
+  canChange = canChange + ' person'
 
   const functionInFunction = () => {
     // When we return the function from an arrow function, it knows the value of
     // variables where it was declared, including canChange
     console.log('we can print ', canChange);
-    return true;
+    return `Danny Trejo is an excellent ${canChange}`;
   };
 
   // Note that we're actually returning a function instead of a value

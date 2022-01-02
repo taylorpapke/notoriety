@@ -3,7 +3,11 @@
  * `import` is something we'll explore with React.
  */
 
-const { myFirstFunction, howNotToUseConst, anArrowFunction, functionsAsParams } = require('./jsFeatures')
+const {
+  myFirstFunction,
+  howNotToUseConst,
+  anArrowFunction,
+  functionsAsParams } = require('./jsFeatures')
 
 
 describe('JavaScript Exaples', () => {
@@ -37,8 +41,8 @@ describe('JavaScript Exaples', () => {
       result = returnedFunction()
     });
 
-    it('should return true from the returnd function', () => {
-      expect(result).toEqual(true)
+    it('should return changed string from the returned function', () => {
+      expect(result).toEqual('stunt')
     });
   });
 
