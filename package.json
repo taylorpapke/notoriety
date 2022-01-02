@@ -20,7 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "fix-lint": "eslint --fix ."
+    "fix-lint": "eslint --fix .",
+    "service": "cd service && npm run dev",
+    "dev": "concurrently \"npm start\" \"cd service/ && npm run dev\""
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "6.5.1",
     "eslint-config-prettier": "8.3.0",
     "prettier": "2.4.1"
   }
