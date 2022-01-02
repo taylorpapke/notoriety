@@ -12,27 +12,15 @@ const Card = (props) => {
 
   const frontContent = () => {
     if (front_image && !front_text) {
-      return (
-        <div className="card-image-full">
-          <img src={front_image} className="card-image" />
-        </div>
-      )
+      return <img src={front_image} alt="replace with dynamic value" />
     } else if (!front_image && front_text) {
-      return (
-        <div className="card-text">
-          <h3>{front_text}</h3>
-        </div>
-      )
+      return <p>{front_text}</p>
     } else if (front_image && front_text) {
       return (
-        <React.Fragment>
-          <div className="card-image-above-text">
-            <img src={front_image} className="card-image" />
-          </div>
-          <div className="card-text">
-            <h3>{front_text}</h3>
-          </div>
-        </React.Fragment>
+        <>
+          <img src={front_image} alt="replace with dynamic value" />
+          <p>{front_text}</p>
+        </>
       )
     } else {
       throw new Error("We shouldn't get to this state")
@@ -41,27 +29,15 @@ const Card = (props) => {
   // WORKITEM Intermittently bad back card formatting.
   const backContent = () => {
     if (back_image && !back_text) {
-      return (
-        <div className="card-image-full">
-          <img src={back_image} className="card-image" />
-        </div>
-      )
+      return <img src={back_image} alt="replace with dynamic value" />
     } else if (!back_image && back_text) {
-      return (
-        <div className="card-text">
-          <h3>{back_text}</h3>
-        </div>
-      )
+      return <p>{back_text}</p>
     } else if (back_image && back_text) {
       return (
-        <React.Fragment>
-          <div className="card-image-above-text">
-            <img src={back_image} className="card-image" />
-          </div>
-          <div className="card-text">
-            <h3>{back_text}</h3>
-          </div>
-        </React.Fragment>
+        <>
+          <img src={back_image} alt="replace with dynamic value" />
+          <p>{back_text}</p>
+        </>
       )
     } else {
       throw new Error("We shouldn't get to this state")
@@ -77,8 +53,11 @@ const Card = (props) => {
   return (
     <div className="flashcard-wrapper">
       <div className="card-surface">
-        {isFront ? frontContent() : backContent()}
+        <div className="card-content-wrapper">
+          {isFront ? frontContent() : backContent()}
+        </div>
       </div>
+      <br />
       <ButtonGroup>
         <Button buttonStyle="primary" onClickHandler={flipHandler}>
           Flip
@@ -104,7 +83,6 @@ Card.propTypes = {
     back_text: PropTypes.string,
     back_image: PropTypes.string,
     cardAdvanceHandler: PropTypes.func.isRequired,
-    correct: PropTypes.number,
   }),
 }
 
