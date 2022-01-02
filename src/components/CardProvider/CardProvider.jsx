@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
 import cardData from '../../data/cards.json'
 
 const CardProvider = () => {
   const [index, setIndex] = useState(0)
+  const [cards, setCards] = useState(cardData)
+
+  useEffect(() => {
+    console.log('When does this run?')
+  })
+
   const nextCardHandler = () => {
-    if (index < cardData.length - 1) {
+    if (index < cards.length - 1) {
       setIndex(index+1)
     } else {
       setIndex(0)
@@ -20,6 +26,11 @@ const CardProvider = () => {
    * cards. After adding the back button, modify the behavior so that the back
    * button is hidden when the first card is displayed and the next button is
    * hidden when the last card in the set is displayed.
+   * Part Three - After our livecoding session on making a dynamic request using
+   * the useEffect hook try replicating what we did on your own. To accomplish
+   * this you should first create a route in Express that returns the card data
+   * (the same data in src/data/cards.json) and test it using curl or Postman.
+   * Next, make a request of the Express service from the useEffect hook.
    */
   return <Card cardContent={{ cardAdvanceHandler: nextCardHandler, ...cardData[index] }}></Card>
 }
