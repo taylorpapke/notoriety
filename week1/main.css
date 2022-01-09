@@ -1,0 +1,33 @@
+.full-width {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 500px;
+    display: flex;
+  }
+  
+  .half {
+    flex-direction: column;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .red {
+    background-color: lightcoral;
+  }
+  
+  .blue {
+    background-color: lightskyblue;
+  }
+
+  .yellow {
+      background-color: yellow;
+  }
+  
+  /* Add a different color class here */
+  
+  button {
+    height: 50px;
+  }
