@@ -22,7 +22,9 @@
   background-color: lightskyblue;
 }
 
-/* Add a different color class here */
+.orange {
+  background-color: darkorange;
+}
 
 button {
   height: 50px;

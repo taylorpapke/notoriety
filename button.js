@@ -1,8 +1,6 @@
 function changeColor() {
   var blueDiv = document.getElementById("changeable");
-  // Use the Mozilla Developer Network resource to find the right way to change
-  // the background for this div 
-  /* Your Code Goes Here */
+  blueDiv.setAttribute('class', 'darkorange half');
 }
 
 function replaceWord() {
@@ -16,12 +14,9 @@ function replaceWord() {
     },
   })
     .then((response) => {
-      console.log(response);
-      response.json().then(() => {
-        /* 
-          Complete this handler function with code that populates an html 
-          element with the random word 
-        */
+        response.json().then((responseBody) => {
+          console.log(responseBody.word);
+          wordable.textContent = responseBody.word
       });
     })
     .catch((err) => {
