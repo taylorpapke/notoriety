@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon app.js"
+    "dev": "nodemon --experimental-json-modules app.js"
   },
   "author": "",
   "license": "ISC",
