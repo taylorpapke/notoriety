@@ -1,4 +1,7 @@
 import express from 'express'
+import cors from 'cors'
+import cardData from './data/cards.json'
+
 
 const app = express()
 const port = 8000
@@ -8,11 +11,15 @@ const port = 8000
  * middleware later
  */
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.get('/cards', (req, res) => {
+  res.send(cardData)
+})
 // Assignment: Add a new route here for GET /cards
 
 app.listen(port, () => {
