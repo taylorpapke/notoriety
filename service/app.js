@@ -11,13 +11,14 @@ const port = 8000
  * middleware later
  */
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
 app.get('/cards', (req, res) => {
-  res.send('Howdy!')
+  res.send(cardData)
 })
 // Assignment: Add a new route here for GET /cards
 

@@ -7,7 +7,7 @@ import ButtonGroup from "../ButtonGroup/ButtonGroup"
 // we could also destructure the props parameter
 const Card = (props) => {
   // WORKITEM image alt text from data
-  const { front_text, front_image, back_text, back_image, cardAdvanceHandler } =
+  const { front_text, front_image, back_text, back_image, cardAdvanceHandler, previousCardHandler, index, } =
     props.cardContent
 
   const frontContent = () => {
@@ -59,17 +59,25 @@ const Card = (props) => {
       </div>
       <br />
       <ButtonGroup>
+        {index !== 0 && <Button 
+          buttonStyle="primary" 
+          onClickHandler={() => {
+            previousCardHandler()
+          }}
+        >
+          Back
+        </Button>}
         <Button buttonStyle="primary" onClickHandler={flipHandler}>
           Flip
         </Button>
-        <Button
+        {index !== 7 && <Button
           buttonStyle="secondary"
           onClickHandler={() => {
             cardAdvanceHandler()
           }}
         >
           Next
-        </Button>
+        </Button>}
       </ButtonGroup>
     </div>
   )
@@ -83,6 +91,8 @@ Card.propTypes = {
     back_text: PropTypes.string,
     back_image: PropTypes.string,
     cardAdvanceHandler: PropTypes.func.isRequired,
+    previousCardHandler: PropTypes.func.isRequired,
+    index: PropTypes.func.isRequired,
   }),
 }
 
